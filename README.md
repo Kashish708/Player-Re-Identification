@@ -12,7 +12,7 @@ This project uses YOLO for object detection and ResNet50 for feature extraction 
 
 - Computes feature similarity using cosine distance and matches using the Hungarian Algorithm.
 
-- Saves matches to a CSV and optionally visualises the results on frames.
+- Saves matches to a CSV and optionally visualizes the results on frames.
 
 ---
 ## **Tech Stack**
@@ -23,6 +23,15 @@ This project uses YOLO for object detection and ResNet50 for feature extraction 
 
 - OpenCV for video processing
 
-- SciPy for optimization and distance computation
+- SciPy for optimisation and distance computation
 
 - Torchvision for pre-trained models
+
+---
+## **Setup** 
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Kashish708/Player-Re-Identification
+
