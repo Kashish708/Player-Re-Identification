@@ -4,7 +4,7 @@ Match players across different camera views using deep learning!
 This project uses YOLO for object detection and ResNet50 for feature extraction to identify and match the same players in two different videos: tactical and Broadcast.
 
 
-How It Works
+#How It Works
 
 It uses YOLO to detect player bounding boxes in each video frame.
 
@@ -15,7 +15,7 @@ Computes feature similarity using cosine distance and matches using the Hungaria
 Saves matches to a CSV and optionally visualizes the results on frames.
 
 
-Tech Stack
+#Tech Stack
 
 YOLO (Ultralytics) for object detection
 
