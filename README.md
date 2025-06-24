@@ -37,13 +37,16 @@ This project uses YOLO for object detection and ResNet50 for feature extraction 
 git clone https://github.com/Kashish708/Player-Re-Identification
 ```
 
-### 2. Install dependencies
+### 2.[Download YOLO model (best.pt)](https://drive.google.com/file/d/1KLNt5YBlizT_PLcEt8JwJRDt_hKdyqdO/view?usp=drive_link)
+
+
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Add Required Files
+### 4. Add Required Files
 
 - Place the YOLO model file (best.pt) in the project directory. 
 
