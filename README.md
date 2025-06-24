@@ -5,6 +5,7 @@ This project uses YOLO for object detection and ResNet50 for feature extraction 
 
 
 How It Works
+
 It uses YOLO to detect player bounding boxes in each video frame.
 
 Crop each detected player and pass it through ResNet50 to extract deep features.
@@ -15,6 +16,7 @@ Saves matches to a CSV and optionally visualizes the results on frames.
 
 
 Tech Stack
+
 YOLO (Ultralytics) for object detection
 
 ResNet50 (via PyTorch) for feature extraction
