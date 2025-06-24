@@ -15,8 +15,9 @@ This project uses YOLO for object detection and ResNet50 for feature extraction 
 - Saves matches to a CSV and optionally visualizes the results on frames.
 
 ---
-## **Tech Stack**
+## **Environment requirements**
 
+- Python 3.8 or higher
 - YOLO (Ultralytics) for object detection
 
 - ResNet50 (via PyTorch) for feature extraction
