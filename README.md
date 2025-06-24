@@ -23,7 +23,7 @@ This project uses YOLO for object detection and ResNet50 for feature extraction 
 
 - OpenCV for video processing
 
-- SciPy for optimisation and distance computation
+- SciPy for optimization and distance computation
 
 - Torchvision for pre-trained models
 
@@ -34,4 +34,26 @@ This project uses YOLO for object detection and ResNet50 for feature extraction 
 
 ```bash
 git clone https://github.com/Kashish708/Player-Re-Identification
+```
 
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Add Required Files
+
+- Could you place the YOLO model file (best.pt) in the project directory. 
+
+- Place video files:
+
+-  tacticam.mp4
+
+-  broadcast.mp4
+
+### 4.  Run the script
+
+```bash
+python app1.py
+```
