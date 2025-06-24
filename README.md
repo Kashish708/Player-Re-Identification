@@ -44,13 +44,13 @@ pip install -r requirements.txt
 
 ### 3. Add Required Files
 
-- Could you place the YOLO model file (best.pt) in the project directory. 
+- Place the YOLO model file (best.pt) in the project directory. 
 
 - Place video files:
 
--  tacticam.mp4
+  tacticam.mp4
 
--  broadcast.mp4
+  broadcast.mp4
 
 ### 4.  Run the script
 
