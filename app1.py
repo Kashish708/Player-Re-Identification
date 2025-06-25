@@ -9,13 +9,13 @@ from scipy.spatial.distance import cdist
 from scipy.optimize import linear_sum_assignment
 import os
 
-# --- Load Models ---
+
 yolo = YOLO(r"D:\PROJECTS\Project1\best (1).pt")
 resnet = resnet50(weights=ResNet50_Weights.DEFAULT)
 resnet.fc = torch.nn.Identity()
 resnet.eval()
 
-# --- Preprocessing ---
+
 preprocess = transforms.Compose([
     transforms.ToPILImage(),
     transforms.Resize((224, 224)),
@@ -24,7 +24,7 @@ preprocess = transforms.Compose([
                          std=[0.229, 0.224, 0.225])
 ])
 
-# --- Step 1: Determine Correct Player Class ---
+
 def test_yolo_classes(video_path, n_frames=5):
     cap = cv2.VideoCapture(video_path)
     frame_count = 0
@@ -43,7 +43,7 @@ def test_yolo_classes(video_path, n_frames=5):
         frame_count += 1
     cap.release()
 
-# --- Step 2: Feature Extraction ---
+
 def extract_features(video_path, player_class=0, max_frames=100):
     cap = cv2.VideoCapture(video_path)
     frame_count = 0
@@ -86,7 +86,7 @@ def extract_features(video_path, player_class=0, max_frames=100):
     cap.release()
     return features, bboxes
 
-# --- Step 3: Match Players with Hungarian Algorithm ---
+
 def match_players(t_feats, b_feats):
     t_keys = list(t_feats.keys())
     b_keys = list(b_feats.keys())
@@ -103,16 +103,16 @@ def match_players(t_feats, b_feats):
         matches[t_keys[t_idx]] = b_keys[b_idx]
     return matches
 
-# --- Step 4: Save Mapping CSV ---
+
 def save_matches_to_csv(matches, path="matches.csv"):
     with open(path, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["Tacticam_FrameID", "Tacticam_PlayerBox", "Broadcast_FrameID", "Broadcast_PlayerBox"])
         for t_id, b_id in matches.items():
             writer.writerow([t_id[0], t_id[1], b_id[0], b_id[1]])
-    print(f"📁 Player ID match results saved to {path}")
+    print(f" Player ID match results saved to {path}")
 
-# --- Step 5: Save Annotated Frames (Optional) ---
+
 def save_annotated_frames(video_path, bboxes, ids, output_dir="annotated_frames", label_prefix=""):
     os.makedirs(output_dir, exist_ok=True)
     cap = cv2.VideoCapture(video_path)
@@ -133,28 +133,27 @@ def save_annotated_frames(video_path, bboxes, ids, output_dir="annotated_frames"
         frame_index += 1
     cap.release()
 
-# --- Run Everything ---
+
 if __name__ == "__main__":
-    # Optional: Check player class
-    # test_yolo_classes(r"D:\PROJECTS\Project1\tacticam.mp4")
+    
 
-    player_class_id = 0  # Adjust based on test_yolo_classes()
+    player_class_id = 0  
 
-    print("🔍 Extracting features from tacticam...")
+    print(" Extracting features from tacticam")
     tacticam_feats, tacticam_boxes = extract_features(r"D:\PROJECTS\Project1\tacticam.mp4", player_class=player_class_id)
 
-    print("🔍 Extracting features from broadcast...")
+    print(" Extracting features from broadcast")
     broadcast_feats, broadcast_boxes = extract_features(r"D:\PROJECTS\Project1\broadcast.mp4", player_class=player_class_id)
 
-    print("🔁 Matching players...")
+    print("Matching players")
     matches = match_players(tacticam_feats, broadcast_feats)
 
-    print("💾 Saving match results to CSV...")
+    print(" Saving match results to CSV")
     save_matches_to_csv(matches, "player_matches.csv")
 
-    # Optional visualization:
-    print("🖼️ Saving sample annotated frames...")
+    
+    print(" Saving sample annotated frames")
     save_annotated_frames(r"D:\PROJECTS\Project1\tacticam.mp4", tacticam_boxes, matches.keys(), output_dir="tacticam_vis", label_prefix="T")
     save_annotated_frames(r"D:\PROJECTS\Project1\broadcast.mp4", broadcast_boxes, matches.values(), output_dir="broadcast_vis", label_prefix="B")
 
-    print("\n✅ All tasks completed.")
+    
