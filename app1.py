@@ -28,7 +28,7 @@ preprocess = transforms.Compose([
 def test_yolo_classes(video_path, n_frames=5):
     cap = cv2.VideoCapture(video_path)
     frame_count = 0
-    print(f"\n🔍 Testing YOLO on {video_path}")
+    print(f"\n Testing YOLO on {video_path}")
     while cap.isOpened() and frame_count < n_frames:
         ret, frame = cap.read()
         if not ret:
